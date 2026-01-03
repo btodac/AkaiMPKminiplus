@@ -29,6 +29,8 @@ end
 
 function remote_init()
 	remote.define_items{
+		-- The keyboard and the pads will both send note information
+		-- pads on 89/99 keyboard on 80/90. The pads must be set to NOTE
 		item{ name = "Keyboard", input = "keyboard" },
 		-- Knobs must be set to RELATIVE
 		item{ name = "Knob 1", input = "delta" },
@@ -39,6 +41,7 @@ function remote_init()
 		item{ name = "Knob 6", input = "delta" },
 		item{ name = "Knob 7", input = "delta" },
 		item{ name = "Knob 8", input = "delta" },
+		-- Standard modifiers
 		item{ name = "Pitch Bend", input = "value", min = 0, max = 16383 },
 		item{ name = "Mod Up", input = "value", min = 0, max = 127 },
 		item{ name = "Mod Down", input = "value", min = 0, max = 127 },
@@ -48,24 +51,7 @@ function remote_init()
 		item{ name = "Stick Down", input = "value", min = 0, max = 127 },
 		item{ name = "Stick Left", input = "value", min = 0, max = 127 },
 		item{ name = "Stick Right", input = "value", min = 0, max = 127 },
-
-		item{ name = "Pad 1A", input = "button" },
-		item{ name = "Pad 2A", input = "button" },
-		item{ name = "Pad 3A", input = "button" },
-		item{ name = "Pad 4A", input = "button" },
-		item{ name = "Pad 5A", input = "button" },
-		item{ name = "Pad 6A", input = "button" },
-		item{ name = "Pad 7A", input = "button" },
-		item{ name = "Pad 8A", input = "button" },
-
-		item{ name = "Pad 1B", input = "button" },
-		item{ name = "Pad 2B", input = "button" },
-		item{ name = "Pad 3B", input = "button" },
-		item{ name = "Pad 4B", input = "button" },
-		item{ name = "Pad 5B", input = "button" },
-		item{ name = "Pad 6B", input = "button" },
-		item{ name = "Pad 7B", input = "button" },
-		item{ name = "Pad 8B", input = "button" },
+		-- Transport controls
 		item{ name = "Rewind", input="button" },
 		item{ name = "Fast Forward", input="button" },
 		item{ name = "Stop", input="button" },
@@ -74,24 +60,6 @@ function remote_init()
 	}
 
 	remote.define_auto_inputs{
-		-- CC Pad Bank A
-		{ pattern = "b? 10 xx", name = "Pad 1A" },
-		{ pattern = "b? 11 xx", name = "Pad 2A" },
-		{ pattern = "b? 12 xx", name = "Pad 3A" },
-		{ pattern = "b? 13 xx", name = "Pad 4A" },
-		{ pattern = "b? 14 xx", name = "Pad 5A" },
-		{ pattern = "b? 15 xx", name = "Pad 6A" },
-		{ pattern = "b? 16 xx", name = "Pad 7A" },
-		{ pattern = "b? 17 xx", name = "Pad 8A" },
-		-- CC Pad Bank B
-		{ pattern = "b? 20 xx", name = "Pad 1B" },
-		{ pattern = "b? 21 xx", name = "Pad 2B" },
-		{ pattern = "b? 22 xx", name = "Pad 3B" },
-		{ pattern = "b? 23 xx", name = "Pad 4B" },
-		{ pattern = "b? 24 xx", name = "Pad 5B" },
-		{ pattern = "b? 25 xx", name = "Pad 6B" },
-		{ pattern = "b? 26 xx", name = "Pad 7B" },
-		{ pattern = "b? 27 xx", name = "Pad 8B" },
 		-- Delta Knobs: When the MPKmini plus program uses 'RELATIVE' the knobs inc/dec the value sending
 		-- the last byte with either 01 (INC) or 7F (DEC)
 		{ pattern = "b? 46 <???y>?", name = "Knob 1", value="1-2*y" }, -- <???y> is a bit mask to obtain the last bit of the first nibble
@@ -112,8 +80,6 @@ function remote_init()
 		{ pattern = "e? xx yy", name = "Pitch Bend", value = "y*128 + x" },
 		{ pattern = "b? 01 xx", name = "Mod Up" },
 		{ pattern = "b? 02 xx", name = "Mod Down" },
-		{ pattern = "8? xx yy", name = "Keyboard", value = "0", note = "x", velocity = "64" },
-		{ pattern = "9? xx 00", name = "Keyboard", value = "0", note = "x", velocity = "64" },
 		{ pattern = "<100x>? yy zz", name = "Keyboard" },
 		{ pattern="b? 73 7f", name="Rewind", value="1" },
 		{ pattern="b? 74 7f", name="Fast Forward", value="1" },
