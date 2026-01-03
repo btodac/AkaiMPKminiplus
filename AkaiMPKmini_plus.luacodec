@@ -6,8 +6,8 @@ function remote_supported_control_surfaces()
 
 	local surfaces =
 		{
-			{ manufacturer="Akai", model="MPK mini mk3 (modified)",
-				source="AkaiMPKmini_mk3_mod.lua", picture="AkaiMPKmini_mk3_mod.png", 
+			{ manufacturer="Akai", model="MPK mini plus",
+				source="AkaiMPKmini_plus.lua", picture="AkaiMPKmini_plus.png", 
 				in_ports={{description="In Port"}}, 
 				out_ports={{description="Out Port", optional=true}},
 				has_keyboard=true, 
