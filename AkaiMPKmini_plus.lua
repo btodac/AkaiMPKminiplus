@@ -8,7 +8,7 @@ function item(item_def)
   return item_def
 end
 
-
+-- remote_probe and remote_prepare_for_use work but the details of how/why are lost on me!
 function remote_probe()
 	return {
 		request="f0 7e 7f 06 01 f7",
@@ -30,6 +30,7 @@ end
 function remote_init()
 	remote.define_items{
 		item{ name = "Keyboard", input = "keyboard" },
+		-- Knobs must be set to RELATIVE
 		item{ name = "Knob 1", input = "delta" },
 		item{ name = "Knob 2", input = "delta" },
 		item{ name = "Knob 3", input = "delta" },
