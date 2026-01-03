@@ -43,10 +43,10 @@ function remote_init()
 		item{ name = "Mod Down", input = "value", min = 0, max = 127 },
 		item{ name = "Pedal", input = "value", min = 0, max = 127 },
 		-- The stick must be set up to use DUAL CC on both axes
-		item{ name = "Stick Up", input = "value", min = 0, max = 127 }, -- b0 0c 00..7f
-		item{ name = "Stick Down", input = "value", min = 0, max = 127 }, -- b0 02 00..7f
-		item{ name = "Stick Left", input = "value", min = 0, max = 127 }, -- b0 0c 00..7f
-		item{ name = "Stick Right", input = "value", min = 0, max = 127 }, -- b0 02 00..7f
+		item{ name = "Stick Up", input = "value", min = 0, max = 127 }, 
+		item{ name = "Stick Down", input = "value", min = 0, max = 127 },
+		item{ name = "Stick Left", input = "value", min = 0, max = 127 },
+		item{ name = "Stick Right", input = "value", min = 0, max = 127 },
 
 		item{ name = "Pad 1A", input = "button" },
 		item{ name = "Pad 2A", input = "button" },
