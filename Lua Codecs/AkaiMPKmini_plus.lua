@@ -60,14 +60,14 @@ function remote_init()
 	remote.define_auto_inputs{
 		-- Delta Knobs: When the MPKmini plus program uses 'RELATIVE' the knobs inc/dec the value sending
 		-- the last byte with either 01 (INC) or 7F (DEC)
-		{ pattern = "b? 46 <???y>?", name = "Knob 1", value="1-2*y" }, -- <???y> is a bit mask to obtain the last bit of the first nibble
-		{ pattern = "b? 47 <???y>?", name = "Knob 2", value="1-2*y" }, -- for INC y = 0, for DEC y = 1
-		{ pattern = "b? 48 <???y>?", name = "Knob 3", value="1-2*y" },
-		{ pattern = "b? 49 <???y>?", name = "Knob 4", value="1-2*y" },
-		{ pattern = "b? 4A <???y>?", name = "Knob 5", value="1-2*y" },
-		{ pattern = "b? 4B <???y>?", name = "Knob 6", value="1-2*y" },
-		{ pattern = "b? 4C <???y>?", name = "Knob 7", value="1-2*y" },
-		{ pattern = "b? 4D <???y>?", name = "Knob 8", value="1-2*y" },
+		{ pattern = "b? 10 <???y>?", name = "Knob 1", value="1-2*y" }, -- <???y> is a bit mask to obtain the last bit of the first nibble
+		{ pattern = "b? 11 <???y>?", name = "Knob 2", value="1-2*y" }, -- for INC y = 0, for DEC y = 1
+		{ pattern = "b? 12 <???y>?", name = "Knob 3", value="1-2*y" },
+		{ pattern = "b? 13 <???y>?", name = "Knob 4", value="1-2*y" },
+		{ pattern = "b? 14 <???y>?", name = "Knob 5", value="1-2*y" },
+		{ pattern = "b? 15 <???y>?", name = "Knob 6", value="1-2*y" },
+		{ pattern = "b? 16 <???y>?", name = "Knob 7", value="1-2*y" },
+		{ pattern = "b? 17 <???y>?", name = "Knob 8", value="1-2*y" },
 		-- Stick
 		{ pattern = "b? 32 xx", name = "Stick X"},
 		{ pattern = "b? 33 xx", name = "Stick Y"},
