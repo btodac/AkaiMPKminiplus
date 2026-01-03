@@ -47,10 +47,8 @@ function remote_init()
 		item{ name = "Mod Down", input = "value", min = 0, max = 127 },
 		item{ name = "Pedal", input = "value", min = 0, max = 127 },
 		-- The stick must be set up to use DUAL CC on both axes
-		item{ name = "Stick Up", input = "value", min = 0, max = 127 }, 
-		item{ name = "Stick Down", input = "value", min = 0, max = 127 },
-		item{ name = "Stick Left", input = "value", min = 0, max = 127 },
-		item{ name = "Stick Right", input = "value", min = 0, max = 127 },
+		item{ name = "Stick X", input = "value", min = 0, max = 127 }, 
+		item{ name = "Stick Y", input = "value", min = 0, max = 127 },
 		-- Transport controls
 		item{ name = "Rewind", input="button" },
 		item{ name = "Fast Forward", input="button" },
@@ -71,10 +69,8 @@ function remote_init()
 		{ pattern = "b? 4C <???y>?", name = "Knob 7", value="1-2*y" },
 		{ pattern = "b? 4D <???y>?", name = "Knob 8", value="1-2*y" },
 		-- Stick
-		{ pattern = "b? 32 xx", name = "Stick Left"},
-		{ pattern = "b? 33 xx", name = "Stick Right"},
-		{ pattern = "b? 34 xx", name = "Stick Up"},
-		{ pattern = "b? 35 xx", name = "Stick Down"},
+		{ pattern = "b? 32 xx", name = "Stick X"},
+		{ pattern = "b? 33 xx", name = "Stick Y"},
 		-- Keyboard
 		{ pattern = "b? 40 xx", name = "Pedal" },
 		{ pattern = "e? xx yy", name = "Pitch Bend", value = "y*128 + x" },
