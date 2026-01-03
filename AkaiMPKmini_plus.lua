@@ -30,18 +30,19 @@ end
 function remote_init()
 	remote.define_items{
 		item{ name = "Keyboard", input = "keyboard" },
-		item{ name = "Knob 1", input = "value", min = 0, max = 127 },
-		item{ name = "Knob 2", input = "value", min = 0, max = 127 },
-		item{ name = "Knob 3", input = "value", min = 0, max = 127 },
-		item{ name = "Knob 4", input = "value", min = 0, max = 127 },
-		item{ name = "Knob 5", input = "value", min = 0, max = 127 },
-		item{ name = "Knob 6", input = "value", min = 0, max = 127 },
-		item{ name = "Knob 7", input = "value", min = 0, max = 127 },
-		item{ name = "Knob 8", input = "value", min = 0, max = 127 },
+		item{ name = "Knob 1", input = "delta" },
+		item{ name = "Knob 2", input = "delta" },
+		item{ name = "Knob 3", input = "delta" },
+		item{ name = "Knob 4", input = "delta" },
+		item{ name = "Knob 5", input = "delta" },
+		item{ name = "Knob 6", input = "delta" },
+		item{ name = "Knob 7", input = "delta" },
+		item{ name = "Knob 8", input = "delta" },
 		item{ name = "Pitch Bend", input = "value", min = 0, max = 16383 },
 		item{ name = "Mod Up", input = "value", min = 0, max = 127 },
 		item{ name = "Mod Down", input = "value", min = 0, max = 127 },
 		item{ name = "Pedal", input = "value", min = 0, max = 127 },
+		-- The stick must be set up to use DUAL CC on both axes
 		item{ name = "Stick Up", input = "value", min = 0, max = 127 }, -- b0 0c 00..7f
 		item{ name = "Stick Down", input = "value", min = 0, max = 127 }, -- b0 02 00..7f
 		item{ name = "Stick Left", input = "value", min = 0, max = 127 }, -- b0 0c 00..7f
@@ -90,15 +91,21 @@ function remote_init()
 		{ pattern = "b? 25 xx", name = "Pad 6B" },
 		{ pattern = "b? 26 xx", name = "Pad 7B" },
 		{ pattern = "b? 27 xx", name = "Pad 8B" },
-		-- Delta Knobs
-		{ pattern = "b? 46 xx", name = "Knob 1" },
-		{ pattern = "b? 47 xx", name = "Knob 2" },
-		{ pattern = "b? 48 xx", name = "Knob 3" },
-		{ pattern = "b? 49 xx", name = "Knob 4" },
-		{ pattern = "b? 4A xx", name = "Knob 5" },
-		{ pattern = "b? 4B xx", name = "Knob 6" },
-		{ pattern = "b? 4C xx", name = "Knob 7" },
-		{ pattern = "b? 4D xx", name = "Knob 8" },
+		-- Delta Knobs: When the MPKmini plus program uses 'RELATIVE' the knobs inc/dec the value sending
+		-- the last byte with either 01 (INC) or 7F (DEC)
+		{ pattern = "b? 46 <???y>?", name = "Knob 1", value="1-2*y" }, -- <???y> is a bit mask to obtain the last bit of the first nibble
+		{ pattern = "b? 47 <???y>?", name = "Knob 2", value="1-2*y" }, -- for INC y = 0, for DEC y = 1
+		{ pattern = "b? 48 <???y>?", name = "Knob 3", value="1-2*y" },
+		{ pattern = "b? 49 <???y>?", name = "Knob 4", value="1-2*y" },
+		{ pattern = "b? 4A <???y>?", name = "Knob 5", value="1-2*y" },
+		{ pattern = "b? 4B <???y>?", name = "Knob 6", value="1-2*y" },
+		{ pattern = "b? 4C <???y>?", name = "Knob 7", value="1-2*y" },
+		{ pattern = "b? 4D <???y>?", name = "Knob 8", value="1-2*y" },
+		-- Stick
+		{ pattern = "b? 32 xx", name = "Stick Left"},
+		{ pattern = "b? 33 xx", name = "Stick Right"},
+		{ pattern = "b? 34 xx", name = "Stick Up"},
+		{ pattern = "b? 35 xx", name = "Stick Down"},
 		-- Keyboard
 		{ pattern = "b? 40 xx", name = "Pedal" },
 		{ pattern = "e? xx yy", name = "Pitch Bend", value = "y*128 + x" },
