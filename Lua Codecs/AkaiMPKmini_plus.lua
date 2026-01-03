@@ -81,6 +81,7 @@ function remote_init()
 		{ pattern = "b? 01 xx", name = "Mod Up" },
 		{ pattern = "b? 02 xx", name = "Mod Down" },
 		{ pattern = "<100x>? yy zz", name = "Keyboard" },
+		-- Transport
 		{ pattern="b? 73 7f", name="Rewind", value="1" },
 		{ pattern="b? 74 7f", name="Fast Forward", value="1" },
 		{ pattern="b? 75 7f", name="Stop", value="1" },
